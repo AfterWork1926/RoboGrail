@@ -21,25 +21,9 @@ https://templatemo.com/tm-556-catalog-z
     function searchProducts() {
     var input = document.getElementById('searchInput').value.trim().toLowerCase();
     var products = document.querySelectorAll('.tm-video-item');
-
-    // Se la barra di ricerca è vuota, mostra tutti gli elementi e interrompi l'esecuzione della funzione
-    if (input === '') {
-        products.forEach(function(product) {
-            product.style.display = "block";
-        });
-        return; // Esci dalla funzione se la barra di ricerca è vuota
-    }
-
-    // Nascondi tutti gli elementi
-    products.forEach(function(product) {
-        product.style.display = "none";
-    });
-
-    // Crea array per memorizzare gli elementi che corrispondono alla ricerca e quelli che non corrispondono
     var matchingProducts = [];
     var nonMatchingProducts = [];
 
-    // Scansiona tutti gli elementi e verifica corrispondenza con la parola chiave di ricerca
     for (var i = 0; i < products.length; i++) {
         var productNameElement = products[i].querySelector('h2');
         var productCategory = products[i].getAttribute('data-category');
@@ -47,31 +31,41 @@ https://templatemo.com/tm-556-catalog-z
         var productName = productNameElement ? productNameElement.innerText.trim().toLowerCase() : '';
         productCategory = productCategory ? productCategory.trim().toLowerCase() : '';
 
-        var productNameWords = productName.split(/\s+/);
-        var productCategoryWords = productCategory.split(/\s+/);
+        // Splitta la stringa di input in termini singoli
+        var inputTerms = input.split(/\s+/);
 
-        var matchProductName = productNameWords.includes(input);
-        var matchProductCategory = productCategoryWords.includes(input);
+        // Verifica se ogni termine di input è incluso nel nome del prodotto o nella categoria
+        var matchProductName = inputTerms.every(function(term) {
+            return productName.includes(term);
+        });
+
+        var matchProductCategory = inputTerms.every(function(term) {
+            return productCategory.includes(term);
+        });
 
         if (matchProductName || matchProductCategory) {
-            matchingProducts.push(products[i]); // Aggiungi gli elementi che corrispondono alla ricerca
+            matchingProducts.push(products[i]);
         } else {
-            nonMatchingProducts.push(products[i]); // Aggiungi gli elementi che non corrispondono alla ricerca
+            nonMatchingProducts.push(products[i]);
         }
     }
 
-    // Mostra solo gli elementi che corrispondono alla ricerca e posizionali correttamente
-    var container = document.querySelector('.tm-gallery'); // Selettore del contenitore della griglia
+    // Nascondi tutti gli elementi
+    products.forEach(function(product) {
+        product.style.display = "none";
+    });
 
-    // Aggiungi gli elementi corrispondenti alla fine del contenitore
+    // Mostra solo gli elementi che corrispondono alla ricerca
     matchingProducts.forEach(function(product) {
-        container.appendChild(product);
         product.style.display = "block";
     });
+
+    // Posiziona gli elementi corrispondenti nella griglia
+    var container = document.querySelector('.tm-gallery');
+    matchingProducts.forEach(function(product) {
+        container.appendChild(product);
+    });
 }
-
-
-</script>
 
 
 </script>
