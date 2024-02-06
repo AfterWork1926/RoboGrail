@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/templatemo-style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     
 <!--
     
@@ -16,35 +16,56 @@ TemplateMo 556 Catalog-Z
 https://templatemo.com/tm-556-catalog-z
 
 -->
+<script src="js/plugins.js"></script>
 <script>
-    // Funzione per gestire la ricerca
     function searchProducts() {
-        // Prendi il valore inserito nella barra di ricerca
-        var input = document.getElementById('searchInput').value.toLowerCase();
-        // Seleziona tutti gli elementi dei prodotti
+        var input = document.getElementById('searchInput').value.trim().toLowerCase();
         var products = document.querySelectorAll('.tm-video-item');
-        
-        // Ciclo attraverso tutti i prodotti
+        var matchingProducts = [];
+        var nonMatchingProducts = [];
+
         for (var i = 0; i < products.length; i++) {
             var productNameElement = products[i].querySelector('h2');
             var productCategory = products[i].getAttribute('data-category');
 
-            // Verifica se productNameElement esiste e ha un valore
-            var productName = productNameElement ? productNameElement.innerText.toLowerCase() : '';
-            // Verifica se productCategory esiste e ha un valore
-            productCategory = productCategory ? productCategory.toLowerCase() : '';
+            var productName = productNameElement ? productNameElement.innerText.trim().toLowerCase() : '';
+            productCategory = productCategory ? productCategory.trim().toLowerCase() : '';
 
-            // Verifica se productName contiene la stringa di input o se productCategory contiene la stringa di input
-            if (productName.includes(input) || productCategory.includes(input)) {
-                products[i].style.display = "block";
+            var productNameWords = productName.split(/\s+/);
+            var productCategoryWords = productCategory.split(/\s+/);
+
+            var matchProductName = productNameWords.includes(input);
+            var matchProductCategory = productCategoryWords.includes(input);
+
+            if (matchProductName || matchProductCategory) {
+                matchingProducts.push(products[i]); // Aggiungi gli elementi che corrispondono alla ricerca
             } else {
-                products[i].style.display = "none";
+                nonMatchingProducts.push(products[i]); // Aggiungi gli elementi che non corrispondono alla ricerca
             }
+        }
+
+        // Nascondi tutti gli elementi
+        for (var j = 0; j < products.length; j++) {
+            products[j].style.display = "none";
+        }
+
+        // Mostra solo gli elementi che corrispondono alla ricerca e posizionali correttamente
+        var container = document.querySelector('.tm-gallery'); // Selettore del contenitore della griglia
+        for (var k = 0; k < matchingProducts.length; k++) {
+            // Mostrare l'elemento corrente
+            matchingProducts[k].style.display = "block";
+
+            // Inserire l'elemento corrente nella posizione k della griglia
+            container.appendChild(matchingProducts[k]); // Aggiungere l'elemento corrente alla fine del contenitore
         }
     }
 </script>
 
-<link rel="stylesheet" href="./custom.css">
+
+</script>
+
+
+<link rel="stylesheet" href="./css/custom.css">
 </head>
 
 <style>

@@ -620,3 +620,25 @@ select:not([multiple]) {
 
     .tm-social-links li { margin-right: 3px; }
 }
+/* Aggiungi queste regole CSS nel tuo file CSS */
+.tm-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Imposta la larghezza minima a 250px */
+    grid-gap: 20px; /* Spazio tra gli elementi della griglia */
+}
+
+/* Aggiorna le regole CSS nel tuo file CSS */
+.tm-video-item {
+    width: 100%; /* Imposta la larghezza a 100% per adattarsi alla larghezza della colonna della griglia */
+    padding: 20px; /* Aggiungi spazio intorno agli elementi invece di utilizzare un bordo */
+    box-sizing: border-box; /* Assicura che il padding non aumenti le dimensioni degli elementi */
+    border-radius: 8px; /* Aggiungi bordi arrotondati */
+    overflow: hidden; /* Assicura che il contenuto all'interno non esca dagli elementi */
+}
+
+.tm-video-item img {
+    width: 100%; /* Assicurati che le immagini si adattino alle dimensioni del loro contenitore */
+    height: auto; /* Imposta l'altezza automaticamente in base alla larghezza */
+}
+
+
