@@ -19,46 +19,58 @@ https://templatemo.com/tm-556-catalog-z
 <script src="js/plugins.js"></script>
 <script>
     function searchProducts() {
-        var input = document.getElementById('searchInput').value.trim().toLowerCase();
-        var products = document.querySelectorAll('.tm-video-item');
-        var matchingProducts = [];
-        var nonMatchingProducts = [];
+    var input = document.getElementById('searchInput').value.trim().toLowerCase();
+    var products = document.querySelectorAll('.tm-video-item');
 
-        for (var i = 0; i < products.length; i++) {
-            var productNameElement = products[i].querySelector('h2');
-            var productCategory = products[i].getAttribute('data-category');
+    // Se la barra di ricerca è vuota, mostra tutti gli elementi e interrompi l'esecuzione della funzione
+    if (input === '') {
+        products.forEach(function(product) {
+            product.style.display = "block";
+        });
+        return; // Esci dalla funzione se la barra di ricerca è vuota
+    }
 
-            var productName = productNameElement ? productNameElement.innerText.trim().toLowerCase() : '';
-            productCategory = productCategory ? productCategory.trim().toLowerCase() : '';
+    // Nascondi tutti gli elementi
+    products.forEach(function(product) {
+        product.style.display = "none";
+    });
 
-            var productNameWords = productName.split(/\s+/);
-            var productCategoryWords = productCategory.split(/\s+/);
+    // Crea array per memorizzare gli elementi che corrispondono alla ricerca e quelli che non corrispondono
+    var matchingProducts = [];
+    var nonMatchingProducts = [];
 
-            var matchProductName = productNameWords.includes(input);
-            var matchProductCategory = productCategoryWords.includes(input);
+    // Scansiona tutti gli elementi e verifica corrispondenza con la parola chiave di ricerca
+    for (var i = 0; i < products.length; i++) {
+        var productNameElement = products[i].querySelector('h2');
+        var productCategory = products[i].getAttribute('data-category');
 
-            if (matchProductName || matchProductCategory) {
-                matchingProducts.push(products[i]); // Aggiungi gli elementi che corrispondono alla ricerca
-            } else {
-                nonMatchingProducts.push(products[i]); // Aggiungi gli elementi che non corrispondono alla ricerca
-            }
-        }
+        var productName = productNameElement ? productNameElement.innerText.trim().toLowerCase() : '';
+        productCategory = productCategory ? productCategory.trim().toLowerCase() : '';
 
-        // Nascondi tutti gli elementi
-        for (var j = 0; j < products.length; j++) {
-            products[j].style.display = "none";
-        }
+        var productNameWords = productName.split(/\s+/);
+        var productCategoryWords = productCategory.split(/\s+/);
 
-        // Mostra solo gli elementi che corrispondono alla ricerca e posizionali correttamente
-        var container = document.querySelector('.tm-gallery'); // Selettore del contenitore della griglia
-        for (var k = 0; k < matchingProducts.length; k++) {
-            // Mostrare l'elemento corrente
-            matchingProducts[k].style.display = "block";
+        var matchProductName = productNameWords.includes(input);
+        var matchProductCategory = productCategoryWords.includes(input);
 
-            // Inserire l'elemento corrente nella posizione k della griglia
-            container.appendChild(matchingProducts[k]); // Aggiungere l'elemento corrente alla fine del contenitore
+        if (matchProductName || matchProductCategory) {
+            matchingProducts.push(products[i]); // Aggiungi gli elementi che corrispondono alla ricerca
+        } else {
+            nonMatchingProducts.push(products[i]); // Aggiungi gli elementi che non corrispondono alla ricerca
         }
     }
+
+    // Mostra solo gli elementi che corrispondono alla ricerca e posizionali correttamente
+    var container = document.querySelector('.tm-gallery'); // Selettore del contenitore della griglia
+
+    // Aggiungi gli elementi corrispondenti alla fine del contenitore
+    matchingProducts.forEach(function(product) {
+        container.appendChild(product);
+        product.style.display = "block";
+    });
+}
+
+
 </script>
 
 
