@@ -188,7 +188,7 @@ a:hover { color:#009999; }
     background: transparent;
 }
 
-.tm-mt-60 { margin-top: 60px; }
+.tm-mt-60 { margin-top: 0px; }
 .tm-mb-50 { margin-bottom: 50px; }
 .tm-mb-74 { margin-bottom: 74px; }
 .tm-mb-90 { margin-bottom: 90px; }
@@ -620,7 +620,7 @@ select:not([multiple]) {
 
     .tm-social-links li { margin-right: 3px; }
 }
-/* Aggiungi queste regole CSS nel tuo file CSS */
+
 .tm-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Imposta la larghezza minima a 250px */
@@ -639,6 +639,10 @@ select:not([multiple]) {
 .tm-video-item img {
     width: 100%; /* Assicurati che le immagini si adattino alle dimensioni del loro contenitore */
     height: auto; /* Imposta l'altezza automaticamente in base alla larghezza */
+}
+.tm-video-item img {
+    max-width: 100%;
+    height: auto;
 }
 
 
