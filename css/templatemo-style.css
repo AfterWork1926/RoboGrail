@@ -645,4 +645,19 @@ select:not([multiple]) {
     height: auto;
 }
 
+.product-title {
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap; /* Impedisce al testo di andare a capo */
+    overflow: hidden; /* Nasconde il testo che supera la larghezza del contenitore */
+    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione se il testo è troppo lungo */
+    display: inline-block; /* Forza il testo a rimanere su una sola riga */
+}
+
+
+
+
+
+
 
