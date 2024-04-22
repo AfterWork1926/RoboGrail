@@ -1,3 +1,25 @@
 .form-control {
     color: black !important; /* Assicura che il colore del testo sia nero */
 }
+.tm-video-item {
+    width: 100%; /* Imposta la larghezza a 100% per adattarsi alla larghezza della colonna della griglia */
+    padding: 20px; /* Aggiungi spazio intorno agli elementi invece di utilizzare un bordo */
+    box-sizing: border-box; /* Assicura che il padding non aumenti le dimensioni degli elementi */
+    border-radius: 8px; /* Aggiungi bordi arrotondati */
+    overflow: hidden; /* Assicura che il contenuto all'interno non esca dagli elementi */
+}
+
+.tm-video-item img {
+    width: 100%; /* Assicurati che le immagini si adattino alle dimensioni del loro contenitore */
+    height: auto; /* Imposta l'altezza automaticamente in base alla larghezza */
+}
+
+.product-title {
+    font-size: 2em; /* Specifica la dimensione del font */
+    margin: 0; /* Rimuove i margini predefiniti */
+    padding: 0; /* Rimuove il padding predefinito */
+    white-space: nowrap; /* Impedisce al testo di andare a capo */
+    overflow: hidden; /* Nasconde il testo che supera la larghezza del contenitore */
+    max-width: 100%; /* Imposta la larghezza massima del testo al 100% del contenitore genitore */
+    display: inline-block; /* Imposta il display inline-block per far sì che il testo occupi solo lo spazio necessario */
+}

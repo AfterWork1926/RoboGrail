@@ -9,66 +9,7 @@
     <link rel="stylesheet" href="css/templatemo-style.css">
     <link rel="stylesheet" href="./css/style.css">
     
-<!--
-    
-TemplateMo 556 Catalog-Z
 
-https://templatemo.com/tm-556-catalog-z
-
--->
-<script src="js/plugins.js"></script>
-<script>
-    function searchProducts() {
-    var input = document.getElementById('searchInput').value.trim().toLowerCase();
-    var products = document.querySelectorAll('.tm-video-item');
-    var matchingProducts = [];
-    var nonMatchingProducts = [];
-
-    for (var i = 0; i < products.length; i++) {
-        var productNameElement = products[i].querySelector('h2');
-        var productCategory = products[i].getAttribute('data-category');
-
-        var productName = productNameElement ? productNameElement.innerText.trim().toLowerCase() : '';
-        productCategory = productCategory ? productCategory.trim().toLowerCase() : '';
-
-        // Splitta la stringa di input in termini singoli
-        var inputTerms = input.split(/\s+/);
-
-        // Verifica se ogni termine di input è incluso nel nome del prodotto o nella categoria
-        var matchProductName = inputTerms.every(function(term) {
-            return productName.includes(term);
-        });
-
-        var matchProductCategory = inputTerms.every(function(term) {
-            return productCategory.includes(term);
-        });
-
-        if (matchProductName || matchProductCategory) {
-            matchingProducts.push(products[i]);
-        } else {
-            nonMatchingProducts.push(products[i]);
-        }
-    }
-
-    // Nascondi tutti gli elementi
-    products.forEach(function(product) {
-        product.style.display = "none";
-    });
-
-    // Mostra solo gli elementi che corrispondono alla ricerca
-    matchingProducts.forEach(function(product) {
-        product.style.display = "block";
-    });
-
-    // Posiziona gli elementi corrispondenti nella griglia
-    var container = document.querySelector('.tm-gallery');
-    matchingProducts.forEach(function(product) {
-        container.appendChild(product);
-    });
-}
-
-
-</script>
 
 <link rel="stylesheet" href="./css/custom.css">
 <style>
@@ -76,28 +17,7 @@ https://templatemo.com/tm-556-catalog-z
 </style>
 <style>
     /* Aggiorna le regole CSS nel tuo file CSS */
-    .tm-video-item {
-        width: 100%; /* Imposta la larghezza a 100% per adattarsi alla larghezza della colonna della griglia */
-        padding: 20px; /* Aggiungi spazio intorno agli elementi invece di utilizzare un bordo */
-        box-sizing: border-box; /* Assicura che il padding non aumenti le dimensioni degli elementi */
-        border-radius: 8px; /* Aggiungi bordi arrotondati */
-        overflow: hidden; /* Assicura che il contenuto all'interno non esca dagli elementi */
-    }
-
-    .tm-video-item img {
-        width: 100%; /* Assicurati che le immagini si adattino alle dimensioni del loro contenitore */
-        height: auto; /* Imposta l'altezza automaticamente in base alla larghezza */
-    }
-
-    .product-title {
-        font-size: 2em; /* Specifica la dimensione del font */
-        margin: 0; /* Rimuove i margini predefiniti */
-        padding: 0; /* Rimuove il padding predefinito */
-        white-space: nowrap; /* Impedisce al testo di andare a capo */
-        overflow: hidden; /* Nasconde il testo che supera la larghezza del contenitore */
-        max-width: 100%; /* Imposta la larghezza massima del testo al 100% del contenitore genitore */
-        display: inline-block; /* Imposta il display inline-block per far sì che il testo occupi solo lo spazio necessario */
-    }
+    
 </style>
 </head>
 
@@ -165,33 +85,6 @@ https://templatemo.com/tm-556-catalog-z
         
         <div class="row tm-mb-90 tm-gallery"></div>
 
-          <!-- 
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                    <figure class="effect-ming tm-video-item" style="background-color: white;" >
-                        <img src="img/CampusGreen.png" alt="Campus Green" style="width:100%">
-                        <figcaption class="d-flex align-items-center justify-content-center" style="color:black ;">
-                            <h2>Adidas &nbsp Campus  &nbsp Dark &nbsp Green &nbsp 00s </h2>
-                            <a href="CampusGreen.html">View more</a>
-                        </figcaption> 
-                    </figure>
-                </div>
-            -->
-            <!--
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item" style="background-color: white;" >
-                    <img src="img/YeezyOnyx.png" alt="Yeezy Onyx" style="width:100%">
-                    <figcaption class="d-flex align-items-center justify-content-center" style="color:black ;">
-                        <h2>Yeezy &nbsp 350  &nbsp V2 &nbsp Onyx  </h2>
-                        <a href="YeezyOnyx.html">View more</a>
-                    </figcaption>                    
-                </figure>
-            </div>
-        
-  
--->
-            
-            
-
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item" data-category="44 2/3" style="background-color: white;" >
                     <img src="img/YeezyCarbon.png" alt="Campus 00s Marine Blue style="width:100%">
@@ -231,105 +124,7 @@ https://templatemo.com/tm-556-catalog-z
                     </figcaption>                    
                 </figure>
             </div>
-            <!--
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-11.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Rosy</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">4 Sep 2020</span>
-                    <span>32,906 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-12.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Rocki</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">28 Aug 2020</span>
-                    <span>50,700 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-13.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Purple</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">22 Aug 2020</span>
-                    <span>107,510 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-14.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Sea</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">14 Aug 2020</span>
-                    <span>118,006 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-15.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Turtle</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">9 Aug 2020</span>
-                    <span>121,300 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="img/img-16.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Peace</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">3 Aug 2020</span>
-                    <span>21,204 views</span>
-                </div>
-            </div>         
-        </div>  row 
-        <div class="row tm-mb-90">
-            <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
-                <div class="tm-paging d-flex">
-                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">4</a>
-                </div>
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
-            </div>            
-        </div>
-        
 
-        <h2 class="col-6 tm-text-primary" style="color: red;">
-            Special Items
-        </h2>
-  
- -->  
          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
             <figure class="effect-ming tm-video-item" data-category="38.5" style="background-color: white;" >
                 <img src="img/Dragon.png" alt="Taxi" style="width:100%">
@@ -407,11 +202,7 @@ https://templatemo.com/tm-556-catalog-z
         </div>
     </footer>
     
-    <script src="js/plugins.js"></script>
-    <script>
-        $(window).on("load", function() {
-            $('body').addClass('loaded');
-        });
-    </script>
+    <script src="js/js/plugins.js"></script>
+    <script src="js/js/searchProducts.js"></script>
 </body>
 </html>
